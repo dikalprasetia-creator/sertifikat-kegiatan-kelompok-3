@@ -1,162 +1,180 @@
-# Aplikasi Sertifikat Kegiatan Berbasis Blockchain
+# APLIKASI SERTIFIKAT KEGIATAN BERBASIS BLOCKCHAIN
 
-**Kelompok 3 - Pemrograman Mobile 2**
+**Kelompok 3 – Pemrograman Mobile 2**
 
-## Deskripsi
+## 1. Deskripsi Aplikasi
 
-Aplikasi Sertifikat Kegiatan Berbasis Blockchain merupakan aplikasi mobile berbasis Flutter yang digunakan untuk mengelola dan memverifikasi keaslian sertifikat kegiatan menggunakan teknologi Blockchain Ethereum Sepolia.
+Aplikasi Sertifikat Kegiatan Berbasis Blockchain merupakan aplikasi mobile berbasis Flutter yang digunakan untuk mengelola, menyimpan, dan memverifikasi keaslian sertifikat kegiatan menggunakan teknologi Blockchain Ethereum Sepolia Testnet.
 
-Aplikasi menyediakan fitur admin untuk mendaftarkan sertifikat dan fitur mahasiswa untuk melihat serta memverifikasi sertifikat berdasarkan Nomor Induk Mahasiswa (NIM).
+Aplikasi ini memiliki dua jenis pengguna, yaitu Admin dan Mahasiswa. Admin bertugas mendaftarkan sertifikat kegiatan ke blockchain, sedangkan mahasiswa dapat melihat dan memverifikasi sertifikat berdasarkan Nomor Induk Mahasiswa (NIM).
 
-## Fitur Aplikasi
+Aplikasi menggunakan SQLite sebagai database lokal untuk menghubungkan data sertifikat dengan NIM mahasiswa pada satu perangkat.
 
-### 1. Admin
+## 2. Fitur Aplikasi
+
+### A. Admin
 - Login sebagai admin.
 - Menghubungkan aplikasi dengan MetaMask menggunakan Reown AppKit.
-- Memasukkan nama penerbit dan nama kegiatan.
-- Mengunggah sertifikat dalam format PDF, JPG, atau PNG.
-- Menghasilkan hash sertifikat menggunakan SHA-256.
-- Mendaftarkan sertifikat ke blockchain.
-- Memperbarui data sertifikat blockchain.
+- Memilih file sertifikat dalam format PDF, JPG, atau PNG.
+- Menghitung nilai hash SHA-256 sertifikat.
+- Mendaftarkan sertifikat ke Smart Contract Ethereum Sepolia.
+- Melihat hash sertifikat.
+- Menyalin hash sertifikat.
+- Memperbarui data blockchain.
 
-### 2. Mahasiswa
+### B. Mahasiswa
 - Login menggunakan NIM.
-- Melihat dashboard mahasiswa.
 - Melihat sertifikat yang terhubung dengan NIM.
-- Melakukan verifikasi keaslian sertifikat.
-- Memeriksa data sertifikat berdasarkan hash pada blockchain.
+- Melihat daftar sertifikat yang telah didaftarkan admin.
+- Memverifikasi keaslian sertifikat berdasarkan hash SHA-256.
+- Memeriksa data sertifikat yang tercatat pada blockchain.
 
-## Teknologi yang Digunakan
+## 3. Teknologi yang Digunakan
 
-| Teknologi | Fungsi |
+| Teknologi | Kegunaan |
 |---|---|
-| Flutter | Framework aplikasi mobile |
+| Flutter | Pengembangan aplikasi mobile |
 | Dart | Bahasa pemrograman |
+| SQLite | Penyimpanan data lokal |
 | Solidity | Smart Contract |
 | Ethereum Sepolia | Jaringan blockchain |
-| MetaMask | Wallet blockchain |
+| MetaMask | Dompet kripto |
 | Reown AppKit | Koneksi wallet |
-| SQLite | Penyimpanan data lokal |
-| SHA-256 | Algoritma hash sertifikat |
-| GitHub | Penyimpanan repository kode |
+| SHA-256 | Menghitung hash sertifikat |
+| Etherscan | Memeriksa transaksi blockchain |
 
-## Dependencies
+## 4. Dependencies
 
-- reown_appkit: ^1.9.0
-- file_picker: 11.0.3
-- crypto: ^3.0.8
-- http: ^1.6.0
-- url_launcher: ^6.3.3
-- sqflite: ^2.4.2
-- path: ^1.9.1
+Beberapa package utama yang digunakan:
 
-## Cara Menjalankan Aplikasi
+- `reown_appkit`
+- `file_picker`
+- `crypto`
+- `http`
+- `url_launcher`
+- `sqflite`
+- `path`
 
-### Persyaratan
-- Flutter SDK
-- Android Studio
-- Visual Studio Code
-- Android SDK
-- MetaMask
+Versi package dapat dilihat pada file `pubspec.yaml`.
 
-### Instalasi
+## 5. Konfigurasi Blockchain
 
-Clone repository:
-
-```bash
-git clone https://github.com/dikalprasetia-creator/sertifikat-kegiatan-kelompok-3.git
-```
-
-Masuk ke folder proyek:
-
-```bash
-cd sertifikat-kegiatan-kelompok-3
-```
-
-Instal dependencies:
-
-```bash
-flutter pub get
-```
-
-Jalankan aplikasi:
-
-```bash
-flutter run
-```
-
-### Build APK
-
-```bash
-flutter build apk --release
-```
-
-Lokasi hasil build:
-
-```text
-build/app/outputs/flutter-apk/app-release.apk
-```
-
-## Konfigurasi Blockchain
+Aplikasi menggunakan jaringan Ethereum Sepolia Testnet.
 
 | Konfigurasi | Nilai |
 |---|---|
-| Network | Ethereum Sepolia Testnet |
+| Network | Sepolia |
 | Chain ID | 11155111 |
-| Chain ID Hex | 0xaa36a7 |
-| Explorer | Etherscan Sepolia |
+| Symbol | SepoliaETH |
+| RPC | https://sepolia.infura.io/v3/ |
+| Block Explorer | https://sepolia.etherscan.io/ |
 
-### Smart Contract Address
+### Alamat Smart Contract
+
+`0xEF9187598b2D6165F07fBa345bfEa70dBdBBD4dc`
+
+### Link Smart Contract Etherscan
+
+https://sepolia.etherscan.io/address/0xEF9187598b2D6165F07fBa345bfEa70dBdBBD4dc
+
+## 6. Bukti Transaksi Blockchain
+
+Aplikasi telah berhasil melakukan pemanggilan fungsi `addCertificate` pada Smart Contract Ethereum Sepolia.
+
+**Informasi transaksi:**
+
+- Fungsi: `addCertificate`
+- Status: Success
+- Jumlah konfirmasi: 106 (saat pemeriksaan)
+- Transaction Hash:
+
+`0x3d769a02325c2004497abe533356c3ccef5a80b33f9711888557088cf8792781`
+
+### Link Pemeriksaan Transaksi
+
+https://sepolia.etherscan.io/tx/0x3d769a02325c2004497abe533356c3ccef5a80b33f9711888557088cf8792781
+
+## 7. Struktur Proyek
 
 ```text
-0x519050FC1a2eAD8355F590BC06813a228210aa90
-```
-
-### Etherscan
-
-https://sepolia.etherscan.io/address/0x519050FC1a2eAD8355F590BC06813a228210aa90
-
-## Fungsi Smart Contract
-
-Smart Contract memiliki fungsi utama:
-
-- `addCertificate`: Mendaftarkan sertifikat ke blockchain.
-- `verifyCertificate`: Memverifikasi sertifikat berdasarkan hash.
-- `certificates`: Mengambil informasi sertifikat.
-- `owner`: Melihat alamat pemilik kontrak.
-
-## Database SQLite
-
-SQLite digunakan untuk menyimpan dan menghubungkan data sertifikat dengan NIM mahasiswa pada perangkat yang digunakan bersama oleh admin dan mahasiswa.
-
-Blockchain digunakan untuk pencatatan dan verifikasi keaslian sertifikat melalui hash SHA-256.
-
-## Struktur Proyek
-
-```text
-sertifikat-kegiatan-kelompok-3/
+sertifikat_kegiatan_final/
+│
 ├── android/
 ├── assets/
 │   └── CertificateRegistrySecure.json
-├── ios/
+│
 ├── lib/
 │   └── main.dart
-├── linux/
-├── macos/
+│
 ├── test/
 ├── web/
 ├── windows/
+│
 ├── pubspec.yaml
 ├── pubspec.lock
 └── README.md
 ```
 
-## Repository GitHub
+## 8. Cara Menjalankan Aplikasi
+
+### Persyaratan
+- Flutter SDK
+- Dart SDK
+- Android Studio atau VS Code
+- Android Emulator atau perangkat Android
+- MetaMask
+- Koneksi internet
+
+### Langkah menjalankan
+
+1. Clone repository:
+
+```bash
+git clone https://github.com/dikalprasetia-creator/sertifikat-kegiatan-kelompok-3.git
+```
+
+2. Masuk ke folder proyek:
+
+```bash
+cd sertifikat-kegiatan-kelompok-3
+```
+
+3. Instal dependencies:
+
+```bash
+flutter pub get
+```
+
+4. Jalankan aplikasi:
+
+```bash
+flutter run
+```
+
+## 9. Cara Build APK
+
+Untuk membuat APK release, jalankan:
+
+```bash
+flutter build apk --release
+```
+
+File APK berada di:
+
+```text
+build/app/outputs/flutter-apk/app-release.apk
+```
+
+## 10. Repository
+
+GitHub Repository:
 
 https://github.com/dikalprasetia-creator/sertifikat-kegiatan-kelompok-3
 
----
+## 11. Pengembang
 
-**Kelompok 3 - Pemrograman Mobile 2**
+**Kelompok 3 – Pemrograman Mobile 2**
 
-Aplikasi Sertifikat Kegiatan Berbasis Blockchain menggunakan Flutter dan Ethereum Sepolia Testnet.
+Proyek: Aplikasi Sertifikat Kegiatan Berbasis Blockchain.
+
+Teknologi utama: Flutter dan Ethereum Sepolia Testnet.
