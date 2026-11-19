@@ -1,0 +1,47 @@
+name: sertifikat_kegiatan
+description: "Aplikasi Sertifikat Kegiatan Kelompok 3 Berbasis Blockchain"
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # Koneksi MetaMask
+  reown_appkit: ^1.9.0
+
+  # Memilih file PDF/JPG/PNG
+  file_picker: 11.0.3
+
+  # Hash SHA-256
+  crypto: ^3.0.8
+
+  # Komunikasi jaringan dan membuka transaksi
+  http: ^1.6.0
+  url_launcher: ^6.3.3
+
+  # Database SQLite lokal
+  sqflite: ^2.4.2
+  path: ^1.9.1
+
+  # Membuka PDF/gambar yang disimpan di SQLite
+  open_filex: ^4.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/CertificateRegistrySecure.json
